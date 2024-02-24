@@ -3,19 +3,19 @@
 namespace App\Tests\Services;
 
 use App\Entity\Product;
+use App\Enums\Tax;
 use App\Services\CalculatePriceIncludingTax;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class CalculatePriceIncludingTaxTest extends TestCase
 {
-    public static function getProducts()
+    public static function getProducts(): array
     {
         return [
-            [100, 20, 120],
-            [200, 20, 220],
-            [100, 10, 110],
-            [200, 10, 210],
+            [100, Tax::LOW, 104],
+            [100, Tax::MEDIUM, 110],
+            [100, Tax::HIGH, 121],
         ];
     }
 

@@ -7,15 +7,21 @@ use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
+use App\Enums\Tax;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ApiResource(
     operations: [
         new GetCollection(),
-        new Post(),
+        new Post(
+            denormalizationContext: [
+                'groups' => ['product:write'],
+            ]
+        ),
     ],
 )]
 class Product
@@ -28,19 +34,23 @@ class Product
     #[ORM\Column(length: 20)]
     #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     #[Assert\NotBlank]
+    #[Groups(['product:write'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
+    #[Groups(['product:write'])]
     private ?string $description = null;
 
     #[ORM\Column]
     #[Assert\NotBlank]
+    #[Groups(['product:write'])]
     private ?int $price = null;
 
     #[ORM\Column]
     #[Assert\NotBlank]
-    private ?int $tax = null;
+    #[Groups(['product:write'])]
+    private Tax $tax;
 
     #[ORM\Column]
     private ?int $priceIncludingTax = null;
@@ -86,12 +96,12 @@ class Product
         return $this;
     }
 
-    public function getTax(): ?int
+    public function getTax(): Tax
     {
         return $this->tax;
     }
 
-    public function setTax(int $tax): static
+    public function setTax(Tax $tax): static
     {
         $this->tax = $tax;
 

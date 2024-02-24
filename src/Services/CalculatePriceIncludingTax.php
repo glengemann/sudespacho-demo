@@ -8,6 +8,6 @@ class CalculatePriceIncludingTax
 {
     public function calculate(Product $product): int
     {
-        return $product->getPrice() + $product->getTax();
+        return $product->getPrice() + $product->getTax()->value;
     }
 }
