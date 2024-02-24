@@ -27,8 +27,23 @@ curl -X 'POST' \
 ## Get Products
 
 ```bash
-curl -X 'GET' \
+curl -X 'GET' -i \
   'http://127.0.0.1:8000/api/products?page=1' \
+  -H 'accept: application/ld+json'
+```
+
+## Create Product
+
+```bash
+curl -X 'POST' \
+  'http://127.0.0.1:8000/api/products' \
   -H 'accept: application/ld+json' \
-  -H 'Authorization: Bearer d7fbd220dbf164a4de4e4d2a2a1069d083903f427154214807979908fb5b209097a4'
+  -H 'Content-Type: application/ld+json' \
+  -H 'Authorization: Bearer ca69449460840b83870d0b79826eed69b2550523c62f355b78c55eb29c8c1b8cd193' \
+  -d '{
+  "name": "string",
+  "description": "string",
+  "price": 0,
+  "tax": 4
+}' | jq
 ```

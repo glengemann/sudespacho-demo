@@ -16,11 +16,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ApiResource(
     operations: [
-        new GetCollection(),
+        new GetCollection(
+            security: 'is_granted("PUBLIC_ACCESS")',
+        ),
         new Post(
             denormalizationContext: [
                 'groups' => ['product:write'],
-            ]
+            ],
+            security: 'is_granted("IS_AUTHENTICATED")',
         ),
     ],
 )]
