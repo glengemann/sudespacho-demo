@@ -14,6 +14,18 @@ class FindProductsQueryHandler
 
     public function __invoke(FindProductsQuery $query)
     {
-        return $this->productRepository->all();
+        $qb = $this->productRepository->all();
+
+        if (null !== $query->name) {
+            $qb = $this
+                ->productRepository->withName($qb, $query->name);
+        }
+
+        if (null !== $query->page) {
+            $qb = $this
+                ->productRepository->withPagination($qb, $query->page, $query->itemsPerPage);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }

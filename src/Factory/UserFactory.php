@@ -67,7 +67,7 @@ final class UserFactory extends ModelFactory
                     $user->getPassword()
                 ));
             })
-            ;
+        ;
     }
     protected static function getClass(): string
     {

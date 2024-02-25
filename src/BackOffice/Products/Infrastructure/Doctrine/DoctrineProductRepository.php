@@ -5,6 +5,7 @@ namespace App\BackOffice\Products\Infrastructure\Doctrine;
 use App\BackOffice\Products\Domain\Model\Product;
 use App\BackOffice\Products\Domain\Repository\ProductRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 
 class DoctrineProductRepository implements ProductRepositoryInterface
 {
@@ -18,13 +19,28 @@ class DoctrineProductRepository implements ProductRepositoryInterface
         $this->em->flush();
     }
 
-    public function all()
+    public function all(): QueryBuilder
     {
-        $qb = $this->em->createQueryBuilder()
+        return $this->em->createQueryBuilder()
             ->select('products')
-            ->from(Product::class, 'products')
-        ;
+            ->from(Product::class, 'products');
+    }
 
-        return $qb->getQuery()->execute();
+    public function withName(QueryBuilder $qb, ?string $name): QueryBuilder
+    {
+        $qb
+            ->andWhere($qb->expr()->like('products.name.name', ':name'))
+            ->setParameter('name', '%' . $name . '%');
+
+        return $qb;
+    }
+
+    public function withPagination(QueryBuilder $qb, ?int $page, ?int $itemsPerPage): QueryBuilder
+    {
+        $qb
+            ->setFirstResult(($page - 1) * $itemsPerPage)
+            ->setMaxResults($itemsPerPage);
+
+        return $qb;
     }
 }

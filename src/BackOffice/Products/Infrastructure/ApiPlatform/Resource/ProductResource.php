@@ -7,18 +7,18 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\BackOffice\Products\Domain\Model\Product;
+use App\BackOffice\Products\Infrastructure\ApiPlatform\ApenApi\NameFilter;
 use App\BackOffice\Products\Infrastructure\ApiPlatform\State\Processor\CreateProductProcessor;
 use App\BackOffice\Products\Infrastructure\ApiPlatform\State\Provider\ProductCollectionProvider;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use ApiPlatform\Metadata\ApiFilter;
-use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ApiResource(
     shortName: 'Product',
     operations: [
         new GetCollection(
             security: 'is_granted("PUBLIC_ACCESS")',
+            filters: [NameFilter::class], // TODO
             provider: ProductCollectionProvider::class,
         ),
         new Post(
@@ -37,7 +37,6 @@ final class ProductResource
         #[ApiProperty(identifier: true, readable: false, writable: false)]
         public ?int $id = null,
 
-        #[ApiFilter(SearchFilter::class, strategy: 'partial')]
         #[Assert\NotBlank]
         #[Groups(['product:write'])]
         public ?string $name = null,

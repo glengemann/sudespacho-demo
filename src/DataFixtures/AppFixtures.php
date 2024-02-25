@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Factory\ApiTokenFactory;
+use App\Factory\ProductFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -13,5 +14,6 @@ class AppFixtures extends Fixture
     {
         UserFactory::createOne(['email' => 'admin@demo.com']);
         ApiTokenFactory::createMany(10);
+        ProductFactory::createMany(200);
     }
 }

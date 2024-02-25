@@ -17,7 +17,15 @@ class ProductCollectionProvider implements ProviderInterface
 
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): array
     {
-        $products =  $this->queryBus->ask(new FindProductsQuery());
+        $name = $context['filters']['name'] ?? null;
+        $page = $context['filters']['page'] ?? null;
+
+        $query = new FindProductsQuery(
+            $name,
+            $page,
+        );
+
+        $products =  $this->queryBus->ask($query);
 
         $resources = [];
         foreach ($products as $product) {

@@ -32,6 +32,15 @@ curl -X 'GET' -i \
   -H 'accept: application/ld+json'
 ```
 
+- Filter by Name
+
+```bash
+curl -X 'GET' \
+  'http://127.0.0.1:8000/api/products?page=1&name=Co' \
+  -H 'Accept: application/ld+json' \
+  | jq
+```
+
 ## Create Product
 
 ```bash
