@@ -11,7 +11,7 @@ use App\BackOffice\Products\Domain\ValueObject\ProductDescription;
 use App\BackOffice\Products\Domain\ValueObject\ProductName;
 use App\BackOffice\Products\Domain\ValueObject\Tax;
 use App\BackOffice\Products\Infrastructure\ApiPlatform\Resource\ProductResource;
-use App\Shared\Command\CommandBusInterface;
+use App\Shared\Application\Command\CommandBusInterface;
 
 class CreateProductProcessor implements ProcessorInterface
 {

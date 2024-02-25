@@ -6,7 +6,7 @@ use App\BackOffice\Products\Domain\ValueObject\Price;
 use App\BackOffice\Products\Domain\ValueObject\ProductDescription;
 use App\BackOffice\Products\Domain\ValueObject\ProductName;
 use App\BackOffice\Products\Domain\ValueObject\Tax;
-use App\Shared\Command\CommandInterface;
+use App\Shared\Application\Command\CommandInterface;
 
 final readonly class CreateProductCommand implements CommandInterface
 {

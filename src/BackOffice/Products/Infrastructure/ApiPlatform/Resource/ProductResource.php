@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\BackOffice\Products\Domain\Model\Product;
 use App\BackOffice\Products\Infrastructure\ApiPlatform\State\Processor\CreateProductProcessor;
+use App\BackOffice\Products\Infrastructure\ApiPlatform\State\Provider\ProductCollectionProvider;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Metadata\ApiFilter;
@@ -18,6 +19,7 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
     operations: [
         new GetCollection(
             security: 'is_granted("PUBLIC_ACCESS")',
+            provider: ProductCollectionProvider::class,
         ),
         new Post(
             denormalizationContext: [

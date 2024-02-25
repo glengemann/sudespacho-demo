@@ -2,25 +2,25 @@
 
 namespace App\Shared\Infrastructure\Symfony\Messenger;
 
-use App\Shared\Application\Command\CommandBusInterface;
-use App\Shared\Application\Command\CommandInterface;
+use App\Shared\Application\Query\QueryBusInterface;
+use App\Shared\Application\Query\QueryInterface;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-class MessengerCommandBus implements CommandBusInterface
+class MessengerQueryBus implements QueryBusInterface
 {
     use HandleTrait;
 
-    public function __construct(private MessageBusInterface $commandBus)
+    public function __construct(private MessageBusInterface $queryBus)
     {
-        $this->messageBus = $this->commandBus;
+        $this->messageBus = $this->queryBus;
     }
 
-    public function dispatch(CommandInterface $command): mixed
+    public function ask(QueryInterface $query): mixed
     {
         try {
-            return $this->handle($command);
+            return $this->handle($query);
         } catch (HandlerFailedException $e) {
             if ($exception = current($e->getWrappedExceptions())) {
                 throw $exception;

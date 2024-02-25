@@ -17,4 +17,14 @@ class DoctrineProductRepository implements ProductRepositoryInterface
         $this->em->persist($product);
         $this->em->flush();
     }
+
+    public function all()
+    {
+        $qb = $this->em->createQueryBuilder()
+            ->select('products')
+            ->from(Product::class, 'products')
+        ;
+
+        return $qb->getQuery()->execute();
+    }
 }

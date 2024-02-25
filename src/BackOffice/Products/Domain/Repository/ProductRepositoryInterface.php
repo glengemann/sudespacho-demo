@@ -8,4 +8,6 @@ use App\Shared\Domain\Repository\RepositoryInterface;
 interface ProductRepositoryInterface extends RepositoryInterface
 {
     public function add(Product $product): void;
+
+    public function all();
 }
