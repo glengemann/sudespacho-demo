@@ -22,7 +22,7 @@ security:
                 username_path: email
                 password_path: password
             logout:
-                path: logout
+                path: /logout
             access_token:
                 token_handler: App\Security\ApiTokenHandler
 

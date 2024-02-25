@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\BackOffice\Products\Domain\Enums;
 
 enum Tax: int
 {

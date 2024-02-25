@@ -22,8 +22,6 @@ class CreateBookCommandHandler
             $command->tax
         );
 
-        $product->calculateTotal();
-
         $this->productRepository->add($product);
 
         return $product;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\EventListener;
+namespace App\BackOffice\Users\Application\EventListener;
 
-use App\Entity\ApiToken;
-use App\Repository\ApiTokenRepository;
+use App\BackOffice\Users\Domain\Model\ApiToken;
+use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Security\Http\AccessToken\HeaderAccessTokenExtractor;

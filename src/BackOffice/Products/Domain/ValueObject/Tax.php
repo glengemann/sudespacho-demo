@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Tax
 {
     #[ORM\Column]
-    public readonly int $tax;
+    public readonly int $tax; // TODO: Enum?
 
     public function __construct(int $tax)
     {

@@ -10,7 +10,7 @@ curl -X 'POST' \
   -d '{
   "email": "admin@demo.com",
   "password": "password"
-}' | jq
+}' | jq .token
 ```
 
 ## Logout
@@ -48,10 +48,10 @@ curl -X 'POST' \
   'http://127.0.0.1:8000/api/products' \
   -H 'accept: application/ld+json' \
   -H 'Content-Type: application/ld+json' \
-  -H 'Authorization: Bearer ca69449460840b83870d0b79826eed69b2550523c62f355b78c55eb29c8c1b8cd193' \
+  -H 'Authorization: Bearer 7bf900e102fb4b4226e1a98f35d5df8335804a13a0833377853a47979030826f5a25' \
   -d '{
-  "name": "string",
-  "description": "string",
+  "name": "Product 1",
+  "description": "Product 1 Description",
   "price": 0,
   "tax": 4
 }' | jq

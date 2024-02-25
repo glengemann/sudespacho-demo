@@ -26,7 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
                 'groups' => ['product:write'],
             ],
             // TODO
-            //security: 'is_granted("IS_AUTHENTICATED")',
+            security: 'is_granted("IS_AUTHENTICATED")',
             processor: CreateProductProcessor::class
         ),
     ],
