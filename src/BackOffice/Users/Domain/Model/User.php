@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\BackOffice\Users\Domain\Model;
 
-use App\Repository\UserRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

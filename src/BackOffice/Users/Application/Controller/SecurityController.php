@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\BackOffice\Users\Application\Controller;
 
-use App\Entity\User;
-use App\Services\UserAccessToken;
+use App\BackOffice\Users\Domain\Model\User;
+use App\BackOffice\Users\Domain\Services\UserAccessToken;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -20,7 +20,7 @@ class SecurityController extends AbstractController
     {
         if (!$user) {
             return $this->json([
-                'error' => 'Invalid login request".',
+                'error' => 'Invalid login request.',
             ], Response::HTTP_UNAUTHORIZED);
         }
 

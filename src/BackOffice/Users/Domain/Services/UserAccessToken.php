@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\BackOffice\Users\Domain\Services;
 
-use App\Entity\ApiToken;
-use App\Entity\User;
+use App\BackOffice\Users\Domain\Model\ApiToken;
+use App\BackOffice\Users\Domain\Model\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserAccessToken

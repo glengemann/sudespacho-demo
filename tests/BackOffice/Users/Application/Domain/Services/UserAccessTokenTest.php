@@ -1,10 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\Services;
+namespace App\Tests\BackOffice\Users\Application\Domain\Services;
 
-use App\Entity\ApiToken;
-use App\Entity\User;
-use App\Services\UserAccessToken;
+use App\BackOffice\Users\Domain\Model\User;
+use App\BackOffice\Users\Domain\Services\UserAccessToken;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 

@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\Entity\ApiToken;
-use App\Repository\ApiTokenRepository;
+use App\BackOffice\Users\Domain\Model\ApiToken;
+use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;

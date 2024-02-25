@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Integration;
+namespace App\Tests\BackOffice\Products\Application;
 
 use App\Factory\ApiTokenFactory;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

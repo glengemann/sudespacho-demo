@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\BackOffice\Users\Domain\Model;
 
-use App\Repository\ApiTokenRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ApiTokenRepository::class)]

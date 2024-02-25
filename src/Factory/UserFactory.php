@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
+use App\BackOffice\Users\Domain\Model\User;
+use App\BackOffice\Users\Infrastructure\Doctrine\UserRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
