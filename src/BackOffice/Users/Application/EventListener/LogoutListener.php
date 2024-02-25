@@ -3,16 +3,16 @@
 namespace App\BackOffice\Users\Application\EventListener;
 
 use App\BackOffice\Users\Domain\Model\ApiToken;
-use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\DoctrineApiTokenRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Security\Http\AccessToken\HeaderAccessTokenExtractor;
 use Symfony\Component\Security\Http\Event\LogoutEvent;
 
-final class LogoutListener
+readonly final class LogoutListener
 {
     public function __construct(
-        private ApiTokenRepository $apiTokenRepository,
+        private DoctrineApiTokenRepository $apiTokenRepository,
         private EntityManagerInterface $em,
     ) {
     }

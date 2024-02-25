@@ -3,7 +3,7 @@
 namespace App\Factory;
 
 use App\BackOffice\Users\Domain\Model\User;
-use App\BackOffice\Users\Infrastructure\Doctrine\UserRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\DoctrineUserRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -20,7 +20,7 @@ use Zenstruck\Foundry\RepositoryProxy;
  * @method static User|Proxy                     last(string $sortedField = 'id')
  * @method static User|Proxy                     random(array $attributes = [])
  * @method static User|Proxy                     randomOrCreate(array $attributes = [])
- * @method static UserRepository|RepositoryProxy repository()
+ * @method static DoctrineUserRepository|RepositoryProxy repository()
  * @method static User[]|Proxy[]                 all()
  * @method static User[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
  * @method static User[]|Proxy[]                 createSequence(iterable|callable $sequence)

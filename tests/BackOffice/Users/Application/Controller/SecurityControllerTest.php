@@ -62,4 +62,53 @@ class SecurityControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
         $this->assertEquals('{"error":"Invalid credentials."}', $client->getResponse()->getContent());
     }
+
+    public function testLogout(): void
+    {
+        $email = 'test@test.com';
+        UserFactory::createOne([
+            'email' => $email,
+        ]);
+
+        static::ensureKernelShutdown();
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            '/login',
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json'
+            ],
+            json_encode([
+                'email' => $email,
+                'password' => 'password',
+            ])
+        );
+
+        $response = $client->getResponse()->getContent();
+        $token = $this->getToken($response);
+
+        $client->request(
+            'POST',
+            '/logout',
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json',
+                'ACCEPT' => 'application/json',
+                'HTTP_Authorization' => 'Bearer ' . $token,
+            ]
+        );
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
+    }
+
+    public function getToken(string $response): string
+    {
+        $response = json_decode($response, true);
+
+        return $response['token'];
+    }
 }

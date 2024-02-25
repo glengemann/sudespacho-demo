@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\BackOffice\Users\Infrastructure\Doctrine;
 
-use App\Entity\ApiToken;
+use App\BackOffice\Users\Domain\Model\ApiToken;
+use App\BackOffice\Users\Domain\Repository\ApiTokenRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method ApiToken[]    findAll()
  * @method ApiToken[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ApiTokenRepository extends ServiceEntityRepository
+class DoctrineApiTokenRepository extends ServiceEntityRepository implements ApiTokenRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -30,29 +31,4 @@ class ApiTokenRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-
-//    /**
-//     * @return ApiToken[] Returns an array of ApiToken objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?ApiToken
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

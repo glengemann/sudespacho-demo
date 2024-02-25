@@ -2,10 +2,10 @@
 
 namespace App\BackOffice\Users\Domain\Model;
 
-use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\DoctrineApiTokenRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ApiTokenRepository::class)]
+#[ORM\Entity(repositoryClass: DoctrineApiTokenRepository::class)]
 class ApiToken
 {
     #[ORM\Id]

@@ -3,7 +3,7 @@
 namespace App\Factory;
 
 use App\BackOffice\Users\Domain\Model\ApiToken;
-use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\DoctrineApiTokenRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -19,7 +19,7 @@ use Zenstruck\Foundry\RepositoryProxy;
  * @method static ApiToken|Proxy                     last(string $sortedField = 'id')
  * @method static ApiToken|Proxy                     random(array $attributes = [])
  * @method static ApiToken|Proxy                     randomOrCreate(array $attributes = [])
- * @method static ApiTokenRepository|RepositoryProxy repository()
+ * @method static DoctrineApiTokenRepository|RepositoryProxy repository()
  * @method static ApiToken[]|Proxy[]                 all()
  * @method static ApiToken[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
  * @method static ApiToken[]|Proxy[]                 createSequence(iterable|callable $sequence)

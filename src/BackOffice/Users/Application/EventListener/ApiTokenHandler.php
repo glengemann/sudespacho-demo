@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Security;
+namespace App\BackOffice\Users\Application\EventListener;
 
-use App\BackOffice\Users\Infrastructure\Doctrine\ApiTokenRepository;
+use App\BackOffice\Users\Infrastructure\Doctrine\DoctrineApiTokenRepository;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Http\AccessToken\AccessTokenHandlerInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 
 readonly class ApiTokenHandler implements AccessTokenHandlerInterface
 {
-    public function __construct(private ApiTokenRepository $apiTokenRepository)
+    public function __construct(private DoctrineApiTokenRepository $apiTokenRepository)
     {
     }
 

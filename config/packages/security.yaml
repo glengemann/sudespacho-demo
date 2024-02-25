@@ -24,7 +24,7 @@ security:
             logout:
                 path: /logout
             access_token:
-                token_handler: App\Security\ApiTokenHandler
+                token_handler: App\BackOffice\Users\Application\EventListener\ApiTokenHandler
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
