@@ -1,0 +1,38 @@
+### Login
+POST http://127.0.0.1:8000/login
+Accept: application/ld+json
+Content-Type: application/ld+json
+
+{
+  "email": "admin@demo.com",
+  "password": "password"
+}
+
+> {% client.global.set("token", response.body.token) %}
+
+### Logout
+POST http://127.0.0.1:8000/logout
+Accept: application/ld+json
+Content-Type: application/ld+json
+Authorization: Bearer {{ token }}
+
+### Get Products
+GET http://127.0.0.1:8000/api/products?page=1
+Accept: application/ld+json
+
+### Filter by Name
+GET http://127.0.0.1:8000/api/products?page=1&name=Co
+Accept: application/ld+json
+
+### Create Product
+POST http://127.0.0.1:8000/api/products
+Accept: application/ld+json
+Content-Type: application/ld+json
+Authorization: Bearer {{ token }}
+
+{
+  "name": "Product 1",
+  "description": "Product 1 Description",
+  "price": 500,
+  "tax": 4
+}

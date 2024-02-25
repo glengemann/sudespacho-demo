@@ -12,6 +12,7 @@ use App\BackOffice\Products\Domain\ValueObject\ProductName;
 use App\BackOffice\Products\Domain\ValueObject\Tax;
 use App\BackOffice\Products\Infrastructure\ApiPlatform\Resource\ProductResource;
 use App\Shared\Application\Command\CommandBusInterface;
+use App\BackOffice\Products\Domain\Enums\Tax as TaxEnum;
 
 class CreateProductProcessor implements ProcessorInterface
 {
@@ -30,7 +31,7 @@ class CreateProductProcessor implements ProcessorInterface
             new ProductName($data->name),
             new ProductDescription($data->description),
             new Price($data->price),
-            new Tax($data->tax),
+            new Tax(TaxEnum::from($data->tax)),
         );
 
         /** @var Product $model */

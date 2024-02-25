@@ -25,7 +25,6 @@ use Symfony\Component\Validator\Constraints as Assert;
             denormalizationContext: [
                 'groups' => ['product:write'],
             ],
-            // TODO
             security: 'is_granted("IS_AUTHENTICATED")',
             processor: CreateProductProcessor::class
         ),
@@ -51,6 +50,7 @@ final class ProductResource
 
         #[Assert\NotBlank]
         #[Groups(['product:write'])]
+        #[Assert\Choice(choices: [4, 10, 21])]
         public ?int $tax = null,
 
         #[ApiProperty(readable: true, writable: false)]
@@ -65,7 +65,7 @@ final class ProductResource
             $product->name(),
             $product->description(),
             $product->price()->price,
-            $product->tax()->tax,
+            $product->tax()->tax->value,
             $product->priceIncludingTax(),
         );
     }

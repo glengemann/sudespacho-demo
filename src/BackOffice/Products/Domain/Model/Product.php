@@ -66,6 +66,6 @@ class Product
 
     public function calculateTotal(): void
     {
-        $this->priceIncludingTax = $this->price->price + $this->tax->tax;
+        $this->priceIncludingTax = $this->price->price + $this->tax->tax->value;
     }
 }

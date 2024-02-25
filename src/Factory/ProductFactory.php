@@ -7,7 +7,7 @@ use App\BackOffice\Products\Domain\ValueObject\Price;
 use App\BackOffice\Products\Domain\ValueObject\ProductDescription;
 use App\BackOffice\Products\Domain\ValueObject\ProductName;
 use App\BackOffice\Products\Domain\ValueObject\Tax;
-use App\Repository\ProductRepository;
+use App\BackOffice\Products\Domain\Enums\Tax as TaxEnum;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -54,7 +54,7 @@ final class ProductFactory extends ModelFactory
             'name' => new ProductName(self::faker()->text(20)),
             'description' => new ProductDescription(self::faker()->text(255)),
             'price' => new Price(self::faker()->randomDigitNotNull()),
-            'tax' => new Tax(self::faker()->randomElement([4, 12, 21])),
+            'tax' => new Tax(self::faker()->randomElement([TaxEnum::LOW, TaxEnum::MEDIUM, TaxEnum::HIGH])),
         ];
     }
 

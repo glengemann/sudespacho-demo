@@ -51,6 +51,35 @@ class ProductResourceTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_CREATED);
     }
 
+    public function testCreatesInvalidTax(): void
+    {
+        $client = static::createClient();
+
+        $token = ApiTokenFactory::createOne();
+        static::ensureKernelShutdown();
+        $key = $token->getToken();
+
+        $client->request(
+            'POST',
+            '/api/products',
+            [],
+            [],
+            server: [
+                'CONTENT_TYPE' => 'application/json',
+                'ACCEPT' => 'application/json',
+                'HTTP_AUTHORIZATION' => 'Bearer ' . $key,
+            ],
+            content: json_encode([
+                'name' => 'TaxTest Product',
+                'description' => 'TaxTest Description',
+                'price' => 1000,
+                'tax' => 0,
+            ])
+        );
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
     public function testCreatesFailOnMissingFields(): void
     {
         $client = static::createClient();
